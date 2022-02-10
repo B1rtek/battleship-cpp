@@ -1,6 +1,7 @@
 #ifndef BATTLESHIP_CPP_BOARD_H
 #define BATTLESHIP_CPP_BOARD_H
 
+/// Needed because linker gets angry
 class Fleet;
 
 #include <string>
@@ -19,7 +20,6 @@ bool fieldOnBoard(std::pair<char, int> field);
  * @brief Class being an array of fields, representing a 10x10 board
  */
 class Board {
-
     Field fields[10][10]{};
 
 public:

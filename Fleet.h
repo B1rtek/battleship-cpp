@@ -1,6 +1,7 @@
 #ifndef BATTLESHIP_CPP_FLEET_H
 #define BATTLESHIP_CPP_FLEET_H
 
+/// Needed because linker gets angry
 class Board;
 
 #include <string>
@@ -49,9 +50,9 @@ public:
 
     bool isAlive();
 
-    std::string toString(bool drawAsEnemy=false);
+    std::string toString(bool drawAsEnemy = false);
 
-    Fleet getDisplayFleet(bool displayAsEnemy=false);
+    Fleet getDisplayFleet(bool displayAsEnemy = false);
 
     std::vector<Ship> getShips();
 

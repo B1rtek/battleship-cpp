@@ -14,6 +14,7 @@ class Ship {
     int size;
     bool vertical;
     std::pair<char, int> origin;
+
 public:
     Ship(std::pair<char, int> origin, int size, bool vertical);
 
