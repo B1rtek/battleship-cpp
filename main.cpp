@@ -1,5 +1,7 @@
 #include <iostream>
-#include "BoardFleet.h"
+#include "Fleet.h"
+#include "Field.h"
+#include "Board.h"
 
 using namespace std;
 
