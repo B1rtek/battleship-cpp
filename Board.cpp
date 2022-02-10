@@ -124,7 +124,7 @@ void Board::setFieldStatus(char x, int y, FieldStatus status) {
 
 /**
  * @brief Returns a vector of pairs containing coordinates of all fields on the board
- * @returns a list of 100 pairs with field coordinates
+ * @returns a set of 100 pairs with field coordinates
  */
 std::set<std::pair<char, int>> returnAllFieldCoordinates() {
     std::set<std::pair<char, int>> allFields;

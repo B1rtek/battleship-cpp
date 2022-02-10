@@ -5,7 +5,7 @@
  * @param origin The position of the upper left segment of the ship
  * @param size length of the ship
  * @param vertical If set to true, the ship will be created vertically,
- * otherwise it'll be created horizontally, by default set to True
+ * otherwise it'll be created horizontally, by default set to true
  */
 Ship::Ship(std::pair<char, int> origin, int size, bool vertical) {
     this->size = size;
@@ -96,9 +96,9 @@ bool Ship::sunk() {
 
 /**
  * @brief Prints out a representation of the ship's condition in a graphical form
- * @param drawAsEnemy if set to True, the ship will be drawn as a sunk
+ * @param drawAsEnemy if set to true, the ship will be drawn as a sunk
  * one or undamaged one, to not indicate which part has been struck to the
- * enemy, False by default
+ * enemy, false by default
  * @return a string representing this Ship
  *
  * For example, "████" represents a ship of size 4 without any damage,

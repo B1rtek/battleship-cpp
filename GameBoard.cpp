@@ -78,7 +78,7 @@ void GameBoard::sinkShip(Ship shipToSink) {
 
 /**
  * @brief Creates a data board representing what the specified player would see
- * @param displayAsEnemy if set to True, the data will reflect what the
+ * @param displayAsEnemy if set to true, the data will reflect what the
  * enemy would see, otherwise it'll look like what the player should see
  * @returns a Board containing data necessary to draw this board on the
  * screen
@@ -91,7 +91,7 @@ Board GameBoard::getDisplayBoard(bool displayAsEnemy) {
         displayBoard = Board();
         for (auto field: returnAllFieldCoordinates()) {
             FieldStatus status = this->dataBoard.getFieldStatus(field.first, field.second);
-            if(status == NOTHING) {
+            if (status == NOTHING) {
                 status = this->visibleBoard.getFieldStatus(field.first, field.second);
             }
             displayBoard.setFieldStatus(field.first, field.second, status);

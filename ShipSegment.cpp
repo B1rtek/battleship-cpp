@@ -39,9 +39,3 @@ bool ShipSegment::isSunk() {
 std::pair<char, int> ShipSegment::getPosition() {
     return std::make_pair(this->x, this->y);
 }
-
-
-
-
-
-

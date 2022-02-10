@@ -30,9 +30,9 @@ bool fieldAvailable(Ship tempShip, Board tempBoard) {
 }
 
 /**
- * Creates a list of fields around the specified field
+ * Creates a vector of fields around the specified field
  * @param source the field to generate surrounding fields of
- * @return list containing coordinates of all fields around the source field
+ * @return vector containing coordinates of all fields around the source field
  */
 std::vector<std::pair<char, int>> fieldsAroundField(std::pair<char, int> source) {
     std::vector<std::pair<char, int>> adherent = createListOfAdherent(source);
@@ -55,7 +55,7 @@ std::set<std::pair<char, int>> setFromVector(std::vector<std::pair<char, int>> b
 }
 
 /**
- * @brief Creates a list of fields around the given ship
+ * @brief Creates a vector of fields around the given ship
  * @param ship ship to generate fields around
  * @return a vector of field coordinates around that ship
  */
@@ -122,9 +122,9 @@ Fleet::Fleet(std::vector<Ship> ships) {
  */
 int Fleet::getSelectedShipIndex() {
     Ship selectedShipValue = *this->selectedShip;
-    for(int i=0; i<this->ships.size(); i++) {
+    for (int i = 0; i < this->ships.size(); i++) {
         Ship atThisIndex = ships[i];
-        if(atThisIndex == selectedShipValue) {
+        if (atThisIndex == selectedShipValue) {
             return i;
         }
     }
@@ -161,7 +161,7 @@ int Fleet::newShipTestFit(Ship newShip) {
  * @brief Creates ships in random places on the board
  *
  * Used by the computer enemy to place ships. First, the rotation of the ship
- * is chosen, and then a list of fields where a ship can be placed is made.
+ * is chosen, and then a vector of fields where a ship can be placed is made.
  * Then, for every ship, a location is chosen, and the cycle continues, until all
  * ships are placed. To test if a location for a ship is valid, ships are
  * placed on a temporary board.

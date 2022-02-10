@@ -9,7 +9,6 @@ enum FieldStatus {
  * @brief Class that stores information about a field on a game board.
  */
 class Field {
-
     FieldStatus status;
 
 public:

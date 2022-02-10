@@ -9,8 +9,8 @@
  * seen by the enemy, based on the data board.
  */
 class GameBoard {
-
     Board dataBoard, visibleBoard;
+
 public:
     explicit GameBoard(Board dataBoard);
 
@@ -22,7 +22,7 @@ public:
 
     void sinkShip(Ship shipToSink);
 
-    Board getDisplayBoard(bool displayAsEnemy=false);
+    Board getDisplayBoard(bool displayAsEnemy = false);
 
     bool fieldUndiscovered(char x, int y);
 
