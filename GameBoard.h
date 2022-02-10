@@ -22,14 +22,11 @@ public:
 
     void sinkShip(Ship shipToSink);
 
-    Board getDisplayBoard(bool displayAsEnemy = false);
+    Board getDisplayBoard(bool displayAsEnemy=false);
 
     bool fieldUndiscovered(char x, int y);
 
     void markMissesAround(Ship shipToMarkAround);
 };
-
-#include "Fleet.h"
-#include "Ship.h"
 
 #endif //BATTLESHIP_CPP_GAMEBOARD_H

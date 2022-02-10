@@ -1,4 +1,5 @@
 #include "ShipSegment.h"
+
 /**
  * @brief Creates a segment setting its position and status to not sunk
  * @param x x coordinate of this segment

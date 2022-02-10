@@ -1,5 +1,4 @@
 #include "GameBoard.h"
-#include "Ship.h"
 
 /**
  * @brief Creates a GameBoard, by taking a data board and creating a visible

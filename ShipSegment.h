@@ -23,9 +23,4 @@ public:
     std::pair<char, int> getPosition();
 };
 
-#include <string>
-#include <vector>
-#include <set>
-#include "Field.h"
-
 #endif //BATTLESHIP_CPP_SHIPSEGMENT_H

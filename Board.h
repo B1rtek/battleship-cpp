@@ -1,10 +1,19 @@
 #ifndef BATTLESHIP_CPP_BOARD_H
 #define BATTLESHIP_CPP_BOARD_H
 
+class Fleet;
+
 #include <string>
 #include <set>
 #include "Field.h"
+#include "Ship.h"
+#include "Fleet.h"
 
+std::pair<int, int> gameToArrayCoords(char x, int y);
+
+std::set<std::pair<char, int>> returnAllFieldCoordinates();
+
+bool fieldOnBoard(std::pair<char, int> field);
 
 /**
  * @brief Class being an array of fields, representing a 10x10 board
@@ -30,11 +39,5 @@ public:
 
     void setFieldStatus(char x, int y, FieldStatus status);
 };
-
-std::pair<int, int> gameToArrayCoords(char x, int y);
-
-std::set<std::pair<char, int>> returnAllFieldCoordinates();
-
-bool fieldOnBoard(std::pair<char, int> field);
 
 #endif //BATTLESHIP_CPP_BOARD_H

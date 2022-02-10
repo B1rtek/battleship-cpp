@@ -27,6 +27,15 @@ Ship::Ship(std::pair<char, int> origin, int size, bool vertical) {
 }
 
 /**
+ * @brief Equality operator, used in some cases to compare Ships.
+ * @param other ship to compare against
+ * @return true if both ships are equal, false if they aren't
+ */
+bool Ship::operator==(Ship other) {
+    return (this->origin == other.getOrigin() && this->size == other.getSize() && this->vertical == other.isVertical());
+}
+
+/**
  * @brief Returns coordinates of segments that make this Ship
  * @returns a vector of pairs with segment coordinates
  */
@@ -95,7 +104,7 @@ bool Ship::sunk() {
  * For example, "████" represents a ship of size 4 without any damage,
  * "█▒▒" represents a ship of size 3 with two of its segments destroyed
  */
-std::string Ship::toString(bool drawAsEnemy = false) {
+std::string Ship::toString(bool drawAsEnemy) {
     std::string representation;
     if (drawAsEnemy) {
         if (this->sunk()) {
@@ -130,16 +139,3 @@ bool Ship::isVertical() {
 std::pair<char, int> Ship::getOrigin() {
     return this->origin;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

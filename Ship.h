@@ -2,6 +2,8 @@
 #define BATTLESHIP_CPP_SHIP_H
 
 #include "ShipSegment.h"
+#include <vector>
+#include <string>
 
 /**
  * @brief Class containing information about a single ship. It contains coordinates
@@ -15,6 +17,8 @@ class Ship {
 public:
     Ship(std::pair<char, int> origin, int size, bool vertical);
 
+    bool operator==(Ship other);
+
     std::vector<std::pair<char, int>> getSegmentCoordinates();
 
     bool checkIfBelongs(char x, int y);
@@ -23,7 +27,7 @@ public:
 
     bool sunk();
 
-    std::string toString(bool drawAsEnemy);
+    std::string toString(bool drawAsEnemy = false);
 
     std::vector<ShipSegment> getSegments();
 
