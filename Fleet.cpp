@@ -128,6 +128,7 @@ int Fleet::getSelectedShipIndex() {
             return i;
         }
     }
+    return 0;
 }
 
 /**

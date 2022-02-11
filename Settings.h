@@ -12,7 +12,7 @@ enum Setting {
  * @brief Class that handles setting settings
  */
 class Settings {
-    static std::map<Setting, bool> defaultSettings;
+    std::map<Setting, bool> defaultSettings;
     std::string path;
     std::map<Setting, bool> settings;
 

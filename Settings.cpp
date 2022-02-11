@@ -8,12 +8,12 @@
  * @param path path to the settings file
  */
 Settings::Settings(std::string path) {
-    Settings::defaultSettings = std::map<Setting, bool>{
+    this->defaultSettings = std::map<Setting, bool>{
             {Setting::MARK_MISSES_AROUND, true},
             {Setting::HARD_ENEMY,         false}
     };
     this->path = path;
-    this->settings = Settings::defaultSettings;
+    this->settings = this->defaultSettings;
 }
 
 /**

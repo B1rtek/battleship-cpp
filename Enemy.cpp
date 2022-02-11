@@ -99,19 +99,19 @@ std::pair<char, int> Enemy::rankFieldsAndChoose() {
             current = leftField(current);
         }
         rankList.emplace_back(std::max(scoreVert, scoreHoriz), field);
-        std::sort(rankList.begin(), rankList.end());
-        int maxScore = rankList.back().first;
-        std::vector<std::pair<char, int>> bestFields;
-        for (unsigned i = rankList.size() - 1; i >= 0; i--) {
-            if (rankList[i].first != maxScore) {
-                break;
-            }
-            bestFields.push_back(rankList[i].second);
-        }
-        std::mt19937 gen(time(nullptr));
-        std::uniform_int_distribution<> dist(0, bestFields.size() - 1);
-        return bestFields[dist(gen)];
     }
+    std::sort(rankList.begin(), rankList.end());
+    int maxScore = rankList.back().first;
+    std::vector<std::pair<char, int>> bestFields;
+    for (unsigned i = rankList.size() - 1; i >= 0; i--) {
+        if (rankList[i].first != maxScore) {
+            break;
+        }
+        bestFields.push_back(rankList[i].second);
+    }
+    std::mt19937 gen(time(nullptr));
+    std::uniform_int_distribution<> dist(0, bestFields.size() - 1);
+    return bestFields[dist(gen)];
 }
 
 /**
