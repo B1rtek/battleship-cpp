@@ -2,6 +2,7 @@
 #define BATTLESHIP_CPP_SETTINGS_H
 
 #include <map>
+#include <string>
 
 enum Setting {
     MARK_MISSES_AROUND, HARD_ENEMY
@@ -11,7 +12,7 @@ enum Setting {
  * @brief Class that handles setting settings
  */
 class Settings {
-    const static std::map<Setting, bool> defaultSettings;
+    static std::map<Setting, bool> defaultSettings;
     std::string path;
     std::map<Setting, bool> settings;
 
