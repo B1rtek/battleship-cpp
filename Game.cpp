@@ -185,29 +185,29 @@ void Game::startGame(Board playerDataBoard, Fleet playerDataFleet) {
  * prevent the player from losing their turn
  */
 bool Game::discoverField(char x, int y) {
-    if(!this->playersTurn) {
+    if (!this->playersTurn) {
         this->messageNotPlayersTurn();
         return false;
     }
-    if(!fieldOnBoard(std::make_pair(x, y))) {
+    if (!fieldOnBoard(std::make_pair(x, y))) {
         this->messageInvalidCoordinates();
         return true;
     }
-    if(!this->enemyBoard.fieldUndiscovered(x, y)) {
+    if (!this->enemyBoard.fieldUndiscovered(x, y)) {
         this->messageFieldAlreadyDiscovered();
         return true;
     }
     this->playersTurn = false;
     bool hit = this->enemyBoard.discoverField(x, y);
-    if(hit) {
+    if (hit) {
         this->playersTurn = true;
         this->messageEnemyShipHit();
         bool sunk = this->enemyFleet.hit(x, y);
-        if(sunk) {
+        if (sunk) {
             this->messageEnemyShipSunk();
             Ship *shipToSink = this->enemyFleet.findShip(x, y);
             this->enemyBoard.sinkShip(*shipToSink);
-            if(this->settings[Setting::MARK_MISSES_AROUND]) {
+            if (this->settings[Setting::MARK_MISSES_AROUND]) {
                 this->enemyBoard.markMissesAround(*shipToSink);
             }
             this->checkWin();
@@ -224,12 +224,12 @@ bool Game::discoverField(char x, int y) {
  * @param y y coordinate of a field to mark
  */
 void Game::markField(char x, int y) {
-    if(!fieldOnBoard(std::make_pair(x, y))) {
+    if (!fieldOnBoard(std::make_pair(x, y))) {
         this->messageInvalidCoordinates();
         return;
     }
     bool marked = this->enemyBoard.markAsEmpty(x, y);
-    if(!marked) {
+    if (!marked) {
         this->messageFieldMarkFail();
     }
 }
@@ -240,12 +240,12 @@ void Game::markField(char x, int y) {
  * @param y y coordinate of a field to unmark
  */
 void Game::unmarkField(char x, int y) {
-    if(!fieldOnBoard(std::make_pair(x, y))) {
+    if (!fieldOnBoard(std::make_pair(x, y))) {
         this->messageInvalidCoordinates();
         return;
     }
     bool unmarked = this->enemyBoard.unmarkAsEmpty(x, y);
-    if(!unmarked) {
+    if (!unmarked) {
         this->messageFieldUnmarkFail();
     }
 }
@@ -262,17 +262,17 @@ void Game::gameHelp() {
  * @return true if the enemy hit player's ship, false otherwise
  */
 bool Game::enemyMove() {
-    if(this->playersTurn) {
+    if (this->playersTurn) {
         return false;
     }
     std::pair<char, int> target = this->enemy.shoot();
     bool hit = this->playerBoard.discoverField(target.first, target.second);
-    if(hit) {
+    if (hit) {
         this->playersTurn = false;
         this->messagePlayerShipHit();
         bool sunk = this->playerFleet.hit(target.first, target.second);
         this->enemy.reactToHit();
-        if(sunk) {
+        if (sunk) {
             this->messagePlayerShipSunk();
             Ship *shipToSink = this->playerFleet.findShip(target.first, target.second);
             this->playerBoard.sinkShip(*shipToSink);
@@ -284,8 +284,8 @@ bool Game::enemyMove() {
         this->messageEnemyMiss();
     }
     std::vector<std::pair<char, int>> toMarkAsEmpty = this->enemy.markAsEmpty();
-    if(!toMarkAsEmpty.empty()) {
-        for(auto &field:toMarkAsEmpty) {
+    if (!toMarkAsEmpty.empty()) {
+        for (auto &field: toMarkAsEmpty) {
             this->playerBoard.markAsEmpty(field.first, field.second);
         }
     }
@@ -293,9 +293,62 @@ bool Game::enemyMove() {
 }
 
 /**
- * @brief Checks if one of the players won the game
- * @return true if the player won, false if the computer enemy won
+ * @brief Checks if one of the players won the game, and if they did, sets won to true
  */
-bool Game::checkWin() {
-    return false;
+void Game::checkWin() {
+    if (!this->playerFleet.isAlive()) {
+        this->messageEnemyWin();
+        this->won = true;
+    }
+    if (!this->enemyFleet.isAlive()) {
+        this->messagePlayerWin();
+        this->won = true;
+    }
+}
+
+/**
+ * @return player's Board to display
+ */
+Board Game::getPlayerBoardDisplay() {
+    return this->playerBoard.getDisplayBoard();
+}
+
+/**
+ * @return enemy's Board to display
+ */
+Board Game::getEnemyBoardDisplay() {
+    return this->enemyBoard.getDisplayBoard(true);
+}
+
+/**
+ * @return player's Fleet to display
+ */
+Fleet Game::getPlayerFleetDisplay() {
+    return this->playerFleet.getDisplayFleet();
+}
+
+/**
+ * @return enemy's Fleet to display
+ */
+Fleet Game::getEnemyFleetDisplay() {
+    return this->enemyFleet.getDisplayFleet(true);
+}
+
+/**
+ * A getter for the messages vector used by the Battleship classes to get the
+ * messages to display
+ * @return a vector with all messages generated during the last move or action
+ */
+std::vector<GameMessage> Game::getDisplayMessages() {
+    std::vector<GameMessage> messagesToGet = this->messages;
+    this->messages.clear();
+    return messagesToGet;
+}
+
+bool Game::isPlayersTurn() {
+    return this->playersTurn;
+}
+
+bool Game::isWon() {
+    return this->won;
 }

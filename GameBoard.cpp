@@ -1,6 +1,11 @@
 #include "GameBoard.h"
 
 /**
+ * @brief Default constructor needed by some other classes
+ */
+GameBoard::GameBoard() = default;
+
+/**
  * @brief Creates a GameBoard, by taking a data board and creating a visible
  * board for it
  * @param dataBoard raw board with all positions of the ships etc.

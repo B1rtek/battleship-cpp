@@ -12,6 +12,8 @@ class GameBoard {
     Board dataBoard, visibleBoard;
 
 public:
+    GameBoard();
+
     explicit GameBoard(Board dataBoard);
 
     bool discoverField(char x, int y);
