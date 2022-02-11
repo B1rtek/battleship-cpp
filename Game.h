@@ -89,7 +89,7 @@ public:
 
     bool enemyMove();
 
-    bool checkWin();
+    void checkWin();
 
     Board getPlayerBoardDisplay();
 

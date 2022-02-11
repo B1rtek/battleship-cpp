@@ -293,9 +293,62 @@ bool Game::enemyMove() {
 }
 
 /**
- * @brief Checks if one of the players won the game
- * @return true if the player won, false if the computer enemy won
+ * @brief Checks if one of the players won the game, and if they did, sets won to true
  */
-bool Game::checkWin() {
-    return false;
+void Game::checkWin() {
+    if(!this->playerFleet.isAlive()) {
+        this->messageEnemyWin();
+        this->won = true;
+    }
+    if(!this->enemyFleet.isAlive()) {
+        this->messagePlayerWin();
+        this->won = true;
+    }
+}
+
+/**
+ * @return player's Board to display
+ */
+Board Game::getPlayerBoardDisplay() {
+    return this->playerBoard.getDisplayBoard();
+}
+
+/**
+ * @return enemy's Board to display
+ */
+Board Game::getEnemyBoardDisplay() {
+    return this->enemyBoard.getDisplayBoard(true);
+}
+
+/**
+ * @return player's Fleet to display
+ */
+Fleet Game::getPlayerFleetDisplay() {
+    return this->playerFleet.getDisplayFleet();
+}
+
+/**
+ * @return enemy's Fleet to display
+ */
+Fleet Game::getEnemyFleetDisplay() {
+    return this->enemyFleet.getDisplayFleet(true);
+}
+
+/**
+ * A getter for the messages list used by the Battleship classes to get the
+ * messages to display
+ * @return a vector with all messages generated during the last move or action
+ */
+std::vector<GameMessage> Game::getDisplayMessages() {
+    std::vector<GameMessage> messagesToGet = this->messages;
+    this->messages.clear();
+    return messagesToGet;
+}
+
+bool Game::isPlayersTurn() {
+    return this->playersTurn;
+}
+
+bool Game::isWon() {
+    return this->won;
 }
