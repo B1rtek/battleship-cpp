@@ -99,7 +99,7 @@ void Game::messageFieldUnmarkFail() {
  * @brief Adds the game help content to the messages vector
  */
 void Game::messageGameHelp() {
-    this->messages.push_back(GameMessage::GAME_HELP);
+    this->messages.push_back(GameMessage::GAME_HELP_MESSAGE);
 }
 
 /**
