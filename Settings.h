@@ -8,6 +8,8 @@ enum Setting {
     MARK_MISSES_AROUND, HARD_ENEMY
 };
 
+bool fileExists(std::string path);
+
 /**
  * @brief Class that handles setting settings
  */

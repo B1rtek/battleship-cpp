@@ -1,7 +1,18 @@
 #include "Settings.h"
-#include <filesystem>
 #include <fstream>
 #include <json.hpp>
+
+/**
+ * Checks if the specified file exists
+ * @param path path to the file to check
+ * @return true if it exists, false if it doesn't
+ *
+ * Replacement for std::filesystem::exists because programs compiled with it don't run
+ */
+bool fileExists(std::string path) {
+    std::ifstream f(path.c_str());
+    return f.good();
+}
 
 /**
  * @brief Initializes settings by loading the default ones
@@ -36,7 +47,7 @@ void Settings::setHardEnemy(bool newState) {
  * @brief Loads settings from the specified settings file
  */
 void Settings::loadSettings() {
-    if (!std::filesystem::exists(this->path)) {
+    if (!fileExists(this->path)) {
         return;
     } else {
         std::fstream settingsFile(this->path);
