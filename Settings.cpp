@@ -69,7 +69,8 @@ void Settings::saveSettings() {
             {"mark_misses_around", this->settings[Setting::MARK_MISSES_AROUND]},
             {"hard_enemy",         this->settings[Setting::HARD_ENEMY]}
     };
-    std::fstream settingsFile(this->path);
+    std::fstream settingsFile;
+    settingsFile.open(this->path, std::ios::out);
     settingsFile << std::setw(4) << settingsJson;
     settingsFile.close();
 }

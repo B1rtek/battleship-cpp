@@ -7,14 +7,14 @@
  * @param y y coordinate of the field, a number from 1 to 10
  * @returns a pair of coordinates translated to indices of the fields array
  *
- * Example: 'a' 7 gets translated to 0 6, since 'a' is the first column and 7 is the
- * 7th row, and computers count from 0
+ * Example: 'a' 7 gets translated to 6 0, since 'a' is the first column and 7 is the
+ * 7th row, and computers count from 0, and the coordinates are stored as [y][x]
  */
 std::pair<int, int> gameToArrayCoords(char x, int y) {
     x = int(x) < 97 ? x = char(int(x) + 32) : x;
     int cx = int(x) - 97;
     y -= 1;
-    return std::make_pair(cx, y);
+    return std::make_pair(y, cx);
 }
 
 /**

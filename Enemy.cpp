@@ -100,14 +100,15 @@ std::pair<char, int> Enemy::rankFieldsAndChoose() {
         }
         rankList.emplace_back(std::max(scoreVert, scoreHoriz), field);
     }
-    std::sort(rankList.begin(), rankList.end());
-    int maxScore = rankList.back().first;
+    int maxScore = -1;
+    for (auto &field: rankList) {
+        maxScore = std::max(maxScore, field.first);
+    }
     std::vector<std::pair<char, int>> bestFields;
-    for (unsigned i = rankList.size() - 1; i >= 0; i--) {
-        if (rankList[i].first != maxScore) {
-            break;
+    for (auto &field: rankList) {
+        if (field.first == maxScore) {
+            bestFields.push_back(field.second);
         }
-        bestFields.push_back(rankList[i].second);
     }
     std::mt19937 gen(time(nullptr));
     std::uniform_int_distribution<> dist(0, bestFields.size() - 1);
