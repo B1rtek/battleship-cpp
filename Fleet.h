@@ -54,7 +54,7 @@ public:
 
     Fleet getDisplayFleet(bool displayAsEnemy = false);
 
-    std::vector<Ship> getShips();
+    std::vector<Ship> *getShips();
 
     Ship *getSelectedShip();
 };

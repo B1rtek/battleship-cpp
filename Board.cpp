@@ -68,8 +68,8 @@ void Board::clearBoard() {
  * Marks all fields the new ship occupies with a status of FieldStatus::SHIP
  */
 void Board::placeShip(Ship ship) {
-    std::vector<ShipSegment> segments = ship.getSegments();
-    for (auto &segment: segments) {
+    std::vector<ShipSegment> *segments = ship.getSegments();
+    for (auto &segment: *segments) {
         std::pair<char, int> position = segment.getPosition();
         this->setFieldStatus(position.first, position.second, SHIP);
     }
@@ -81,8 +81,8 @@ void Board::placeShip(Ship ship) {
  */
 void Board::placeFleet(Fleet fleetToPlace) {
     this->clearBoard();
-    std::vector<Ship> ships = fleetToPlace.getShips();
-    for (auto &ship: ships) {
+    std::vector<Ship> *ships = fleetToPlace.getShips();
+    for (auto &ship: *ships) {
         this->placeShip(ship);
     }
 }
@@ -92,8 +92,8 @@ void Board::placeFleet(Fleet fleetToPlace) {
  * @param shipToSink Ship to be marked as sunken
  */
 void Board::markSunkenShip(Ship shipToSink) {
-    std::vector<ShipSegment> segments = shipToSink.getSegments();
-    for (auto &segment: segments) {
+    std::vector<ShipSegment> *segments = shipToSink.getSegments();
+    for (auto &segment: *segments) {
         std::pair<char, int> position = segment.getPosition();
         this->setFieldStatus(position.first, position.second, SUNK);
     }

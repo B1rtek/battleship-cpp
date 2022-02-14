@@ -360,10 +360,11 @@ Fleet Fleet::getDisplayFleet(bool displayAsEnemy) {
     }
 }
 
-std::vector<Ship> Fleet::getShips() {
-    return this->ships;
-}
 
 Ship *Fleet::getSelectedShip() {
     return this->selectedShip;
+}
+
+std::vector<Ship> *Fleet::getShips() {
+    return &this->ships;
 }

@@ -30,7 +30,7 @@ public:
 
     std::string toString(bool drawAsEnemy = false);
 
-    std::vector<ShipSegment> getSegments();
+    std::vector<ShipSegment> *getSegments();
 
     int getSize();
 

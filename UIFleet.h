@@ -1,28 +1,29 @@
-#ifndef BATTLESHIP_CPP_UIBOARD_H
-#define BATTLESHIP_CPP_UIBOARD_H
+#ifndef BATTLESHIP_CPP_UIFLEET_H
+#define BATTLESHIP_CPP_UIFLEET_H
 
-#include "Board.h"
+#include <QIcon>
+#include "Fleet.h"
 #include "BoardButton.h"
 #include <map>
-#include <QIcon>
 #include <QGridLayout>
 
 /**
- * @brief Representation of Board in the UI
+ * @brief Representation of Fleet in the UI
  */
-class UIBoard {
-    Board cachedBoard;
+class UIFleet {
+    Fleet cachedFleet;
     std::map<FieldStatus, QIcon> icons;
-    BoardButton *buttonArray[10][10];
+    BoardButton *buttonArray[10][4];
+    std::vector<std::pair<int, int>> positionsArray[10];
 
     void createButtonArray();
 
-    void initializeCachedBoard();
+    void initializeCachedFleet();
 
 public:
-    UIBoard();
+    UIFleet();
 
-    void updateBoard(Board displayBoard, Ship *selectedShip = nullptr);
+    void updateFleetDisplay(Fleet displayFleet);
 
     void placeButtonArray(QGridLayout *parentGridLayout);
 
@@ -33,4 +34,4 @@ public:
     void setIcons(std::map<FieldStatus, QIcon> iconsMap);
 };
 
-#endif //BATTLESHIP_CPP_UIBOARD_H
+#endif //BATTLESHIP_CPP_UIFLEET_H

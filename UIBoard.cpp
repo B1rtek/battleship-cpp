@@ -70,10 +70,10 @@ void UIBoard::updateBoard(Board displayBoard, Ship *selectedShip) {
  * @brief Creates the array in the actual window's UI
  * @param parentGridLayout grid layout in which the board will be placed
  */
-void UIBoard::placeButtonArray(QGridLayout parentGridLayout) {
+void UIBoard::placeButtonArray(QGridLayout *parentGridLayout) {
     for (int y = 0; y < 10; y++) {
         for (int x = 0; x < 10; x++) {
-            parentGridLayout.addWidget(this->buttonArray[y][x], y, x);
+            parentGridLayout->addWidget(this->buttonArray[y][x], y, x);
         }
     }
 }

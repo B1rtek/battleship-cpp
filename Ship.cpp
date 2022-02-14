@@ -124,8 +124,8 @@ std::string Ship::toString(bool drawAsEnemy) {
     return representation;
 }
 
-std::vector<ShipSegment> Ship::getSegments() {
-    return this->segments;
+std::vector<ShipSegment> *Ship::getSegments() {
+    return &this->segments;
 }
 
 int Ship::getSize() {
