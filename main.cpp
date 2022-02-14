@@ -1,4 +1,4 @@
-#include "BattleshipCLI.h"
+#include "BattleshipGUI.h"
 #include <argparse.hpp>
 #include <QApplication>
 #include "ui_battleship.h"
@@ -21,10 +21,8 @@ int main(int argc, char *argv[]) {
         return 0;
     } else {
         QApplication app(argc, argv);
-        QMainWindow window;
-        Ui::Battleship ui;
-        ui.setupUi(&window);
-        window.show();
+        BattleshipGUI battleshipWindow = BattleshipGUI();
+        battleshipWindow.show();
         return QApplication::exec();
     }
 }
