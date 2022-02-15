@@ -83,7 +83,7 @@ void UIBoard::placeButtonArray(QGridLayout *parentGridLayout) {
  * UIBoard is clicked on with the left mouse button
  * @param leftClickAction a function or a method to assign to the buttons
  */
-void UIBoard::defineLeftClickAction(std::function<void(char, int)> leftClickAction) {
+void UIBoard::defineLeftClickAction(std::function<void(char, int)> *leftClickAction) {
     for (auto &y: this->buttonArray) {
         for (auto &x: y) {
             x->setLeftClickAction(leftClickAction);
@@ -96,7 +96,7 @@ void UIBoard::defineLeftClickAction(std::function<void(char, int)> leftClickActi
  * UIBoard is clicked on with the right mouse button
  * @param rightClickAction a function or a method to assign to the buttons
  */
-void UIBoard::defineRightClickAction(std::function<void(char, int)> rightClickAction) {
+void UIBoard::defineRightClickAction(std::function<void(char, int)> *rightClickAction) {
     for (auto &y: this->buttonArray) {
         for (auto &x: y) {
             x->setRightClickAction(rightClickAction);

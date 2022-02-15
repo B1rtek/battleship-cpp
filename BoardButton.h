@@ -17,8 +17,8 @@ std::pair<char, int> arrayToGameCoords(int x, int y);
 class BoardButton : public QToolButton {
     char x;
     int y;
-    std::function<void(char x, int y)> leftClickAction;
-    std::function<void(char x, int y)> rightClickAction;
+    std::function<void(char x, int y)> *leftClickAction;
+    std::function<void(char x, int y)> *rightClickAction;
 
 public:
     explicit BoardButton(QWidget *parent = nullptr);
@@ -29,9 +29,9 @@ public:
 
     void mousePressEvent(QMouseEvent *event) override;
 
-    void setLeftClickAction(std::function<void(char x, int y)> function);
+    void setLeftClickAction(std::function<void(char x, int y)> *function);
 
-    void setRightClickAction(std::function<void(char x, int y)> function);
+    void setRightClickAction(std::function<void(char x, int y)> *function);
 
     void setGameCoordinates(char newX, int newY);
 };

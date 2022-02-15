@@ -109,7 +109,7 @@ void UIFleet::placeButtonArray(QGridLayout *parentGridLayout) {
  * UIFleet is clicked on with the left mouse button
  * @param leftClickAction a function or a method to assign to the buttons
  */
-void UIFleet::defineLeftClickAction(std::function<void(char, int)> leftClickAction) {
+void UIFleet::defineLeftClickAction(std::function<void(char, int)> *leftClickAction) {
     for (auto &y: this->buttonArray) {
         for (auto &x: y) {
             x->setLeftClickAction(leftClickAction);
@@ -122,7 +122,7 @@ void UIFleet::defineLeftClickAction(std::function<void(char, int)> leftClickActi
  * UIFleet is clicked on with the right mouse button
  * @param rightClickAction a function or a method to assign to the buttons
  */
-void UIFleet::defineRightClickAction(std::function<void(char, int)> rightClickAction) {
+void UIFleet::defineRightClickAction(std::function<void(char, int)> *rightClickAction) {
     for (auto &y: this->buttonArray) {
         for (auto &x: y) {
             x->setRightClickAction(rightClickAction);

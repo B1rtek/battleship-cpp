@@ -52,11 +52,11 @@ void BoardButton::resizeEvent(QResizeEvent *event) {
 void BoardButton::mousePressEvent(QMouseEvent *event) {
     if (event->button() == Qt::LeftButton) {
         if (this->leftClickAction != nullptr) {
-            this->leftClickAction(this->x, this->y);
+            (*leftClickAction)(this->x, this->y);
         }
     } else if (event->button() == Qt::LeftButton) {
         if (this->rightClickAction != nullptr) {
-            this->rightClickAction(this->x, this->y);
+            (*rightClickAction)(this->x, this->y);
         }
     }
 }
@@ -65,7 +65,7 @@ void BoardButton::mousePressEvent(QMouseEvent *event) {
  * @brief assigns this button's function that will be called when it's pressed with a left mouse button
  * @param function function to be assigned
  */
-void BoardButton::setLeftClickAction(std::function<void(char, int)> function) {
+void BoardButton::setLeftClickAction(std::function<void(char, int)> *function) {
     this->leftClickAction = function;
 }
 
@@ -73,7 +73,7 @@ void BoardButton::setLeftClickAction(std::function<void(char, int)> function) {
  * @brief assigns this button's function that will be called when it's pressed with a right mouse button
  * @param function function to be assigned
  */
-void BoardButton::setRightClickAction(std::function<void(char, int)> function) {
+void BoardButton::setRightClickAction(std::function<void(char, int)> *function) {
     this->rightClickAction = function;
 }
 

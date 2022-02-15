@@ -59,12 +59,15 @@ void BattleshipGUI::setupBoards() {
     this->fleetCreatorBoard.setIcons(icons);
     this->gamePlayerBoard.setIcons(icons);
     this->gameEnemyBoard.setIcons(icons);
-    this->fleetCreatorBoard.defineLeftClickAction(
+    auto *fleetCreatorLeftClickFunctionPointer = new std::function<void(char, int)>(
             std::bind(&BattleshipGUI::fleetCreatorLeftClick, this, std::placeholders::_1, std::placeholders::_2));
-    this->gameEnemyBoard.defineLeftClickAction(
+    this->fleetCreatorBoard.defineLeftClickAction(fleetCreatorLeftClickFunctionPointer);
+    auto *gameLeftClickFunctionPointer = new std::function<void(char, int)>(
             std::bind(&BattleshipGUI::gameLeftClick, this, std::placeholders::_1, std::placeholders::_2));
-    this->gameEnemyBoard.defineRightClickAction(
+    this->gameEnemyBoard.defineLeftClickAction(gameLeftClickFunctionPointer);
+    auto *gameRightClickFunctionPointer = new std::function<void(char, int)>(
             std::bind(&BattleshipGUI::gameRightClick, this, std::placeholders::_1, std::placeholders::_2));
+    this->gameEnemyBoard.defineRightClickAction(gameRightClickFunctionPointer);
     this->fleetCreatorBoard.placeButtonArray(this->ui.grid_setup_board);
     this->gamePlayerBoard.placeButtonArray(this->ui.grid_game_player_board);
     this->gameEnemyBoard.placeButtonArray(this->ui.grid_game_enemy_board);
@@ -80,14 +83,12 @@ void BattleshipGUI::setupFleetDisplays() {
     std::map<FieldStatus, QIcon> icons = loadIcons();
     this->gamePlayerFleet.setIcons(icons);
     this->gameEnemyFleet.setIcons(icons);
-    this->gamePlayerFleet.defineLeftClickAction(
+    auto *gameLeftClickFunctionPointer = new std::function<void(char, int)>(
             std::bind(&BattleshipGUI::gameLeftClick, this, std::placeholders::_1, std::placeholders::_2));
-    this->gamePlayerFleet.defineRightClickAction(
-            std::bind(&BattleshipGUI::gameLeftClick, this, std::placeholders::_1, std::placeholders::_2));
-    this->gameEnemyFleet.defineLeftClickAction(
-            std::bind(&BattleshipGUI::gameLeftClick, this, std::placeholders::_1, std::placeholders::_2));
-    this->gameEnemyFleet.defineRightClickAction(
-            std::bind(&BattleshipGUI::gameLeftClick, this, std::placeholders::_1, std::placeholders::_2));
+    this->gamePlayerFleet.defineLeftClickAction(gameLeftClickFunctionPointer);
+    this->gamePlayerFleet.defineRightClickAction(gameLeftClickFunctionPointer);
+    this->gameEnemyFleet.defineLeftClickAction(gameLeftClickFunctionPointer);
+    this->gameEnemyFleet.defineRightClickAction(gameLeftClickFunctionPointer);
     this->gamePlayerFleet.placeButtonArray(this->ui.grid_game_player_fleet);
     this->gameEnemyFleet.placeButtonArray(this->ui.grid_game_enemy_fleet);
 }
@@ -329,12 +330,12 @@ void BattleshipGUI::quit() {
  */
 void BattleshipGUI::mousePressEvent(QMouseEvent *event) {
     /// check if the click happened on the game page
-    if(this->ui.stackedWidget->currentIndex() == 2) {
-        if(!this->game.isPlayersTurn()) {
+    if (this->ui.stackedWidget->currentIndex() == 2) {
+        if (!this->game.isPlayersTurn()) {
             this->game.enemyMove();
             this->gameRefresh();
         }
-        if(this->game.isWon()) {
+        if (this->game.isWon()) {
             this->ui.stackedWidget->setCurrentIndex(0);
         }
     }

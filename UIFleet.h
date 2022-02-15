@@ -27,9 +27,9 @@ public:
 
     void placeButtonArray(QGridLayout *parentGridLayout);
 
-    void defineLeftClickAction(std::function<void(char x, int y)> leftClickAction);
+    void defineLeftClickAction(std::function<void(char x, int y)> *leftClickAction);
 
-    void defineRightClickAction(std::function<void(char x, int y)> rightClickAction);
+    void defineRightClickAction(std::function<void(char x, int y)> *rightClickAction);
 
     void setIcons(std::map<FieldStatus, QIcon> iconsMap);
 };
