@@ -32,15 +32,15 @@ BattleshipGUI::BattleshipGUI(QWidget *parent) {
     this->ui.setupUi(this);
     this->fleetCreator = FleetCreator();
     this->game = Game();
-    this->fleetCreatorBoard = UIBoard();
-    this->gamePlayerBoard = UIBoard();
-    this->gameEnemyBoard = UIBoard();
-    this->gamePlayerFleet = UIFleet();
-    this->gameEnemyFleet = UIFleet();
+//    this->fleetCreatorBoard = UIBoard();
+//    this->gamePlayerBoard = UIBoard();
+//    this->gameEnemyBoard = UIBoard();
+//    this->gamePlayerFleet = UIFleet();
+//    this->gameEnemyFleet = UIFleet();
     this->settings = Settings();
     this->settings.loadSettings();
-    this->setupBoards();
-    this->setupFleetDisplays();
+//    this->setupBoards();
+//    this->setupFleetDisplays();
     this->linkButtons();
     this->applySettings();
     this->resizeWindow();
@@ -56,21 +56,21 @@ BattleshipGUI::BattleshipGUI(QWidget *parent) {
  */
 void BattleshipGUI::setupBoards() {
     std::map<FieldStatus, QIcon> icons = loadIcons();
-    this->fleetCreatorBoard.setIcons(icons);
-    this->gamePlayerBoard.setIcons(icons);
-    this->gameEnemyBoard.setIcons(icons);
-    auto *fleetCreatorLeftClickFunctionPointer = new std::function<void(char, int)>(
-            std::bind(&BattleshipGUI::fleetCreatorLeftClick, this, std::placeholders::_1, std::placeholders::_2));
-    this->fleetCreatorBoard.defineLeftClickAction(fleetCreatorLeftClickFunctionPointer);
-    auto *gameLeftClickFunctionPointer = new std::function<void(char, int)>(
-            std::bind(&BattleshipGUI::gameLeftClick, this, std::placeholders::_1, std::placeholders::_2));
-    this->gameEnemyBoard.defineLeftClickAction(gameLeftClickFunctionPointer);
-    auto *gameRightClickFunctionPointer = new std::function<void(char, int)>(
-            std::bind(&BattleshipGUI::gameRightClick, this, std::placeholders::_1, std::placeholders::_2));
-    this->gameEnemyBoard.defineRightClickAction(gameRightClickFunctionPointer);
-    this->fleetCreatorBoard.placeButtonArray(this->ui.grid_setup_board);
-    this->gamePlayerBoard.placeButtonArray(this->ui.grid_game_player_board);
-    this->gameEnemyBoard.placeButtonArray(this->ui.grid_game_enemy_board);
+//    this->fleetCreatorBoard.setIcons(icons);
+//    this->gamePlayerBoard.setIcons(icons);
+//    this->gameEnemyBoard.setIcons(icons);
+//    auto *fleetCreatorLeftClickFunctionPointer = new std::function<void(char, int)>(
+//            std::bind(&BattleshipGUI::fleetCreatorLeftClick, this, std::placeholders::_1, std::placeholders::_2));
+//    this->fleetCreatorBoard.defineLeftClickAction(fleetCreatorLeftClickFunctionPointer);
+//    auto *gameLeftClickFunctionPointer = new std::function<void(char, int)>(
+//            std::bind(&BattleshipGUI::gameLeftClick, this, std::placeholders::_1, std::placeholders::_2));
+//    this->gameEnemyBoard.defineLeftClickAction(gameLeftClickFunctionPointer);
+//    auto *gameRightClickFunctionPointer = new std::function<void(char, int)>(
+//            std::bind(&BattleshipGUI::gameRightClick, this, std::placeholders::_1, std::placeholders::_2));
+//    this->gameEnemyBoard.defineRightClickAction(gameRightClickFunctionPointer);
+//    this->fleetCreatorBoard.placeButtonArray(this->ui.grid_setup_board);
+//    this->gamePlayerBoard.placeButtonArray(this->ui.grid_game_player_board);
+//    this->gameEnemyBoard.placeButtonArray(this->ui.grid_game_enemy_board);
 }
 
 /**
@@ -81,16 +81,16 @@ void BattleshipGUI::setupBoards() {
  */
 void BattleshipGUI::setupFleetDisplays() {
     std::map<FieldStatus, QIcon> icons = loadIcons();
-    this->gamePlayerFleet.setIcons(icons);
-    this->gameEnemyFleet.setIcons(icons);
-    auto *gameLeftClickFunctionPointer = new std::function<void(char, int)>(
-            std::bind(&BattleshipGUI::gameLeftClick, this, std::placeholders::_1, std::placeholders::_2));
-    this->gamePlayerFleet.defineLeftClickAction(gameLeftClickFunctionPointer);
-    this->gamePlayerFleet.defineRightClickAction(gameLeftClickFunctionPointer);
-    this->gameEnemyFleet.defineLeftClickAction(gameLeftClickFunctionPointer);
-    this->gameEnemyFleet.defineRightClickAction(gameLeftClickFunctionPointer);
-    this->gamePlayerFleet.placeButtonArray(this->ui.grid_game_player_fleet);
-    this->gameEnemyFleet.placeButtonArray(this->ui.grid_game_enemy_fleet);
+//    this->gamePlayerFleet.setIcons(icons);
+//    this->gameEnemyFleet.setIcons(icons);
+//    auto *gameLeftClickFunctionPointer = new std::function<void(char, int)>(
+//            std::bind(&BattleshipGUI::gameLeftClick, this, std::placeholders::_1, std::placeholders::_2));
+//    this->gamePlayerFleet.defineLeftClickAction(gameLeftClickFunctionPointer);
+//    this->gamePlayerFleet.defineRightClickAction(gameLeftClickFunctionPointer);
+//    this->gameEnemyFleet.defineLeftClickAction(gameLeftClickFunctionPointer);
+//    this->gameEnemyFleet.defineRightClickAction(gameLeftClickFunctionPointer);
+//    this->gamePlayerFleet.placeButtonArray(this->ui.grid_game_player_fleet);
+//    this->gameEnemyFleet.placeButtonArray(this->ui.grid_game_enemy_fleet);
 }
 
 /**
@@ -218,7 +218,7 @@ void BattleshipGUI::fleetCreatorDone() {
 void BattleshipGUI::fleetCreatorRefresh() {
     Board board = this->fleetCreator.getBoardDisplay();
     Ship *ship = this->fleetCreator.getSelectedShip();
-    this->fleetCreatorBoard.updateBoard(board, ship);
+//    this->fleetCreatorBoard.updateBoard(board, ship);
 }
 
 /**
@@ -265,12 +265,12 @@ void BattleshipGUI::gameRightClick(char x, int y) {
 void BattleshipGUI::gameRefresh() {
     Board playerBoard = this->game.getEnemyBoardDisplay();
     Board enemyBoard = this->game.getEnemyBoardDisplay();
-    this->gamePlayerBoard.updateBoard(playerBoard, nullptr);
-    this->gameEnemyBoard.updateBoard(enemyBoard, nullptr);
+//    this->gamePlayerBoard.updateBoard(playerBoard, nullptr);
+//    this->gameEnemyBoard.updateBoard(enemyBoard, nullptr);
     Fleet playerFleet = this->game.getPlayerFleetDisplay();
     Fleet enemyFleet = this->game.getEnemyFleetDisplay();
-    this->gamePlayerFleet.updateFleetDisplay(playerFleet);
-    this->gameEnemyFleet.updateFleetDisplay(enemyFleet);
+//    this->gamePlayerFleet.updateFleetDisplay(playerFleet);
+//    this->gameEnemyFleet.updateFleetDisplay(enemyFleet);
     std::vector<GameMessage> messages = this->game.getDisplayMessages();
     std::string formatted = formatGameMessages(messages, true);
     this->ui.game_plain_text_edit_log->insertPlainText(QString(formatted.c_str()));

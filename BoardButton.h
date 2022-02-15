@@ -19,6 +19,7 @@ class BoardButton : public QToolButton {
     int y;
     std::function<void(char x, int y)> *leftClickAction;
     std::function<void(char x, int y)> *rightClickAction;
+//    BattleshipGUI *battleshipGuiCallbackInstance;
 
 public:
     explicit BoardButton(QWidget *parent = nullptr);
@@ -32,6 +33,8 @@ public:
     void setLeftClickAction(std::function<void(char x, int y)> *function);
 
     void setRightClickAction(std::function<void(char x, int y)> *function);
+
+//    void setLeftClickCommand();
 
     void setGameCoordinates(char newX, int newY);
 };

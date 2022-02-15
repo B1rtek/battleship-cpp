@@ -16,11 +16,11 @@ class BattleshipGUI : public QMainWindow {
     Ui_Battleship ui;
     FleetCreator fleetCreator;
     Game game;
-    UIBoard fleetCreatorBoard;
-    UIBoard gamePlayerBoard;
-    UIBoard gameEnemyBoard;
-    UIFleet gamePlayerFleet;
-    UIFleet gameEnemyFleet;
+//    UIBoard fleetCreatorBoard;
+//    UIBoard gamePlayerBoard;
+//    UIBoard gameEnemyBoard;
+//    UIFleet gamePlayerFleet;
+//    UIFleet gameEnemyFleet;
     Settings settings;
 
     void setupBoards();
