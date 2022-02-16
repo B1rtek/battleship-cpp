@@ -19,8 +19,8 @@ class BattleshipGUI : public QMainWindow {
     UIBoard fleetCreatorBoard;
     UIBoard gamePlayerBoard;
     UIBoard gameEnemyBoard;
-//    UIFleet gamePlayerFleet;
-//    UIFleet gameEnemyFleet;
+    UIFleet gamePlayerFleet;
+    UIFleet gameEnemyFleet;
     Settings settings;
 
     void setupBoards();

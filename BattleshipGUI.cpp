@@ -15,10 +15,10 @@ QSize windowSize = QSize(730, 560);
 std::map<FieldStatus, QIcon> loadIcons() {
     return std::map<FieldStatus, QIcon>{
             {FieldStatus::NOTHING, QIcon(QPixmap("res/nothing.png"))},
-            {FieldStatus::NOTHING, QIcon(QPixmap("res/miss.png"))},
-            {FieldStatus::NOTHING, QIcon(QPixmap("res/ship.png"))},
-            {FieldStatus::NOTHING, QIcon(QPixmap("res/sunk.png"))},
-            {FieldStatus::NOTHING, QIcon(QPixmap("res/sel.png"))}
+            {FieldStatus::MISS, QIcon(QPixmap("res/miss.png"))},
+            {FieldStatus::SHIP, QIcon(QPixmap("res/ship.png"))},
+            {FieldStatus::SUNK, QIcon(QPixmap("res/sunk.png"))},
+            {FieldStatus::SELECTED, QIcon(QPixmap("res/sel.png"))}
     };
 }
 
@@ -35,8 +35,8 @@ BattleshipGUI::BattleshipGUI(QWidget *parent) {
     this->fleetCreatorBoard = UIBoard();
     this->gamePlayerBoard = UIBoard();
     this->gameEnemyBoard = UIBoard();
-//    this->gamePlayerFleet = UIFleet();
-//    this->gameEnemyFleet = UIFleet();
+    this->gamePlayerFleet = UIFleet();
+    this->gameEnemyFleet = UIFleet();
     this->settings = Settings();
     this->settings.loadSettings();
     this->setupBoards();
@@ -81,16 +81,16 @@ void BattleshipGUI::setupBoards() {
  */
 void BattleshipGUI::setupFleetDisplays() {
     std::map<FieldStatus, QIcon> icons = loadIcons();
-//    this->gamePlayerFleet.setIcons(icons);
-//    this->gameEnemyFleet.setIcons(icons);
-//    auto *gameLeftClickFunctionPointer = new std::function<void(char, int)>(
-//            std::bind(&BattleshipGUI::gameLeftClick, this, std::placeholders::_1, std::placeholders::_2));
-//    this->gamePlayerFleet.defineLeftClickAction(gameLeftClickFunctionPointer);
-//    this->gamePlayerFleet.defineRightClickAction(gameLeftClickFunctionPointer);
-//    this->gameEnemyFleet.defineLeftClickAction(gameLeftClickFunctionPointer);
-//    this->gameEnemyFleet.defineRightClickAction(gameLeftClickFunctionPointer);
-//    this->gamePlayerFleet.placeButtonArray(this->ui.grid_game_player_fleet);
-//    this->gameEnemyFleet.placeButtonArray(this->ui.grid_game_enemy_fleet);
+    this->gamePlayerFleet.setIcons(icons);
+    this->gameEnemyFleet.setIcons(icons);
+    auto *gameLeftClickFunctionPointer = new std::function<void(char, int)>(
+            std::bind(&BattleshipGUI::gameLeftClick, this, std::placeholders::_1, std::placeholders::_2));
+    this->gamePlayerFleet.defineLeftClickAction(gameLeftClickFunctionPointer);
+    this->gamePlayerFleet.defineRightClickAction(gameLeftClickFunctionPointer);
+    this->gameEnemyFleet.defineLeftClickAction(gameLeftClickFunctionPointer);
+    this->gameEnemyFleet.defineRightClickAction(gameLeftClickFunctionPointer);
+    this->gamePlayerFleet.placeButtonArray(this->ui.grid_game_player_fleet);
+    this->gameEnemyFleet.placeButtonArray(this->ui.grid_game_enemy_fleet);
 }
 
 /**
@@ -269,8 +269,8 @@ void BattleshipGUI::gameRefresh() {
     this->gameEnemyBoard.updateBoard(enemyBoard, nullptr);
     Fleet playerFleet = this->game.getPlayerFleetDisplay();
     Fleet enemyFleet = this->game.getEnemyFleetDisplay();
-//    this->gamePlayerFleet.updateFleetDisplay(playerFleet);
-//    this->gameEnemyFleet.updateFleetDisplay(enemyFleet);
+    this->gamePlayerFleet.updateFleetDisplay(playerFleet);
+    this->gameEnemyFleet.updateFleetDisplay(enemyFleet);
     std::vector<GameMessage> messages = this->game.getDisplayMessages();
     std::string formatted = formatGameMessages(messages, true);
     this->ui.game_plain_text_edit_log->insertPlainText(QString(formatted.c_str()));

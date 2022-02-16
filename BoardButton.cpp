@@ -33,7 +33,7 @@ BoardButton::BoardButton(QWidget *parent) : QToolButton(parent) {
  * @param width Qt5 stuff idk
  * @return Qt5 stuff idk, this function is overriden
  */
-int BoardButton::heightForWidth(int width) {
+int BoardButton::heightForWidth(int width) const {
     return width;
 }
 
