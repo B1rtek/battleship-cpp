@@ -2,7 +2,11 @@ cmake_minimum_required(VERSION 3.20)
 project(battleship-cpp)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_PREFIX_PATH "D:\\Kody\\Qt5\\5.15.2\\mingw81_64")
+
+set(PATH_TO_QT5 "D:\\Kody\\Qt5\\5.15.2\\mingw81_64") # path to your Qt5 directory goes here
+if(WIN32)
+    set(CMAKE_PREFIX_PATH ${PATH_TO_QT5})
+endif(WIN32)
 
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Gui REQUIRED)
