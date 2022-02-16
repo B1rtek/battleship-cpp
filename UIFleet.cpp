@@ -35,9 +35,9 @@ UIFleet::UIFleet() {
 void UIFleet::createButtonArray() {
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < this->positionsArray[i].size(); j++) {
-            BoardButton button = BoardButton();
-            button.setGameCoordinates(' ', 0);
-            this->buttonArray[i][j] = &button;
+            BoardButton *button = new BoardButton();
+            button->setGameCoordinates(' ', 0);
+            this->buttonArray[i][j] = button;
         }
     }
 }

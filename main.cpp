@@ -1,7 +1,6 @@
 #include "BattleshipGUI.h"
 #include <argparse.hpp>
 #include <QApplication>
-#include "ui_battleship.h"
 
 using namespace std;
 using namespace argparse;
