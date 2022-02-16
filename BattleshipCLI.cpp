@@ -5,7 +5,7 @@
 #ifdef _WIN32
 std::string clsCommand = "cls";
 #endif
-#ifdef _linux
+#ifdef __linux__
 std::string clsCommand = "clear";
 #endif
 

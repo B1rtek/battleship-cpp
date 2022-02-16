@@ -4,7 +4,7 @@
 #ifdef _WIN32
 QSize windowSize = QSize(700, 540);
 #endif
-#ifdef _linux
+#ifdef __linux__
 QSize windowSize = QSize(730, 560);
 #endif
 
