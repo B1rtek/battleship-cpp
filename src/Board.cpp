@@ -1,4 +1,4 @@
-#include "../include/Board.h"
+#include "Board.h"
 
 /**
  * @brief Function used to translate in-game coordinates to board field coordinates

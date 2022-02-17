@@ -1,4 +1,4 @@
-#include "../include/BoardButton.h"
+#include "BoardButton.h"
 #include <QMouseEvent>
 
 /**

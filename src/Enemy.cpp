@@ -1,5 +1,5 @@
-#include "../include/Enemy.h"
-#include "../include/Board.h"
+#include "Enemy.h"
+#include "Board.h"
 #include <algorithm>
 #include <random>
 #include <ctime>

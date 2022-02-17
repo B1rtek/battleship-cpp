@@ -1,4 +1,4 @@
-#include "../include/Field.h"
+#include "Field.h"
 
 /**
  * @brief Initializes a field, assigning it a status of FieldStatus::NOTHING

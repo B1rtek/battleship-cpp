@@ -1,5 +1,5 @@
 #include <QScrollBar>
-#include "../include/BattleshipGUI.h"
+#include "BattleshipGUI.h"
 
 #ifdef _WIN32
 QSize windowSize = QSize(700, 540);
@@ -14,10 +14,10 @@ QSize windowSize = QSize(730, 560);
  */
 std::map<FieldStatus, QIcon> loadIcons() {
     return std::map<FieldStatus, QIcon>{
-            {FieldStatus::NOTHING, QIcon(QPixmap("res/nothing.png"))},
-            {FieldStatus::MISS, QIcon(QPixmap("res/miss.png"))},
-            {FieldStatus::SHIP, QIcon(QPixmap("res/ship.png"))},
-            {FieldStatus::SUNK, QIcon(QPixmap("res/sunk.png"))},
+            {FieldStatus::NOTHING,  QIcon(QPixmap("res/nothing.png"))},
+            {FieldStatus::MISS,     QIcon(QPixmap("res/miss.png"))},
+            {FieldStatus::SHIP,     QIcon(QPixmap("res/ship.png"))},
+            {FieldStatus::SUNK,     QIcon(QPixmap("res/sunk.png"))},
             {FieldStatus::SELECTED, QIcon(QPixmap("res/sel.png"))}
     };
 }

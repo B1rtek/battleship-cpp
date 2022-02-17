@@ -1,7 +1,6 @@
-#include "../include/Fleet.h"
-#include "../include/Enemy.h"
+#include "Fleet.h"
+#include "Enemy.h"
 #include <ctime>
-#include <random>
 #include <algorithm>
 
 /**

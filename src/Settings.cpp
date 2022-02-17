@@ -1,4 +1,4 @@
-#include "../include/Settings.h"
+#include "Settings.h"
 #include <fstream>
 #include <json.hpp>
 

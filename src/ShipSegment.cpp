@@ -1,4 +1,4 @@
-#include "../include/ShipSegment.h"
+#include "ShipSegment.h"
 
 /**
  * @brief Creates a segment setting its position and status to not sunk
