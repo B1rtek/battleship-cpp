@@ -34,7 +34,7 @@ class Fleet {
 public:
     Fleet();
 
-    Fleet(std::vector<Ship> ships);
+    explicit Fleet(std::vector<Ship> ships);
 
     void createRandom();
 

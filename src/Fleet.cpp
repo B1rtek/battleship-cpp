@@ -351,9 +351,9 @@ Fleet Fleet::getDisplayFleet(bool displayAsEnemy) {
                 displayShips.push_back(newShip);
             }
         }
-        return {displayShips};
+        return Fleet(displayShips);
     } else {
-        return {this->ships};
+        return Fleet(this->ships);
     }
 }
 

@@ -23,7 +23,7 @@ class BoardButton : public QToolButton {
 public:
     explicit BoardButton(QWidget *parent = nullptr);
 
-    int heightForWidth(int width) const override;
+    [[nodiscard]] int heightForWidth(int width) const override;
 
     void resizeEvent(QResizeEvent *event) override;
 
