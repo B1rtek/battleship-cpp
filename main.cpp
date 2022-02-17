@@ -1,6 +1,7 @@
 #include "BattleshipGUI.h"
 #include <argparse.hpp>
 #include <QApplication>
+#include <QStyleFactory>
 
 using namespace std;
 using namespace argparse;
@@ -22,6 +23,8 @@ int main(int argc, char *argv[]) {
         QApplication app(argc, argv);
 #ifdef _WIN32
         QApplication::setStyle("windowsvista");
+#elif __linux__
+        QApplication::setStyle("fusion");
 #endif
         BattleshipGUI battleshipWindow = BattleshipGUI();
         battleshipWindow.show();
