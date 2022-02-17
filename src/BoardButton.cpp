@@ -54,7 +54,7 @@ void BoardButton::mousePressEvent(QMouseEvent *event) {
         if (this->leftClickAction != nullptr) {
             (*leftClickAction)(this->x, this->y);
         }
-    } else if (event->button() == Qt::LeftButton) {
+    } else if (event->button() == Qt::RightButton) {
         if (this->rightClickAction != nullptr) {
             (*rightClickAction)(this->x, this->y);
         }
