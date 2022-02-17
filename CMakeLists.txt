@@ -9,8 +9,6 @@ if (WIN32)
 endif (WIN32)
 
 find_package(Qt5Widgets REQUIRED)
-find_package(Qt5Gui REQUIRED)
-find_package(Qt5Core REQUIRED)
 
 set(BASE_SOURCE_FILES src/Fleet.cpp include/Fleet.h src/Field.cpp include/Field.h src/Board.cpp include/Board.h src/GameBoard.cpp include/GameBoard.h src/ShipSegment.cpp include/ShipSegment.h src/Ship.cpp include/Ship.h src/Enemy.cpp include/Enemy.h src/Settings.cpp include/Settings.h src/FleetCreator.cpp include/FleetCreator.h src/Game.cpp include/Game.h src/BattleshipCLI.cpp include/BattleshipCLI.h)
 set(GUI_SOURCE_FILES src/BattleshipGUI.cpp include/BattleshipGUI.h src/BoardButton.cpp include/BoardButton.h src/UIBoard.cpp include/UIBoard.h src/UIFleet.cpp include/UIFleet.h)
