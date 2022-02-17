@@ -52,7 +52,7 @@ void UIBoard::updateBoard(Board displayBoard, Ship *selectedShip) {
         FieldStatus newStatus = displayBoard.getFieldStatus(field.first, field.second);
         if (this->cachedBoard.getFieldStatus(field.first, field.second) != newStatus) {
             std::pair<int, int> arrayCoords = gameToArrayCoords(field.first, field.second);
-            this->buttonArray[arrayCoords.second][arrayCoords.first]->setIcon(this->icons[newStatus]);
+            this->buttonArray[arrayCoords.first][arrayCoords.second]->setIcon(this->icons[newStatus]);
             this->cachedBoard.setFieldStatus(field.first, field.second, newStatus);
         }
     }
@@ -60,7 +60,7 @@ void UIBoard::updateBoard(Board displayBoard, Ship *selectedShip) {
         std::vector<std::pair<char, int>> selected = selectedShip->getSegmentCoordinates();
         for (auto &field: selected) {
             std::pair<int, int> arrayCoords = gameToArrayCoords(field.first, field.second);
-            this->buttonArray[arrayCoords.second][arrayCoords.first]->setIcon(this->icons[FieldStatus::SELECTED]);
+            this->buttonArray[arrayCoords.first][arrayCoords.second]->setIcon(this->icons[FieldStatus::SELECTED]);
             this->cachedBoard.setFieldStatus(field.first, field.second, FieldStatus::SELECTED);
         }
     }

@@ -20,6 +20,9 @@ int main(int argc, char *argv[]) {
         return 0;
     } else {
         QApplication app(argc, argv);
+#ifdef _WIN32
+        QApplication::setStyle("windowsvista");
+#endif
         BattleshipGUI battleshipWindow = BattleshipGUI();
         battleshipWindow.show();
         return QApplication::exec();

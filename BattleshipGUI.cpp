@@ -263,7 +263,7 @@ void BattleshipGUI::gameRightClick(char x, int y) {
  * @brief Refreshes all Game UI elements after player or the enemy performs a move
  */
 void BattleshipGUI::gameRefresh() {
-    Board playerBoard = this->game.getEnemyBoardDisplay();
+    Board playerBoard = this->game.getPlayerBoardDisplay();
     Board enemyBoard = this->game.getEnemyBoardDisplay();
     this->gamePlayerBoard.updateBoard(playerBoard, nullptr);
     this->gameEnemyBoard.updateBoard(enemyBoard, nullptr);

@@ -76,15 +76,15 @@ void UIFleet::updateFleetDisplay(Fleet displayFleet) {
         std::vector<ShipSegment> *segments = ships->at(shipNum).getSegments();
         std::vector<ShipSegment> *cachedSegments = cachedShips->at(shipNum).getSegments();
         for (int segmentNum = 0; segmentNum < this->positionsArray[shipNum].size(); segmentNum++) {
-            ShipSegment segment = segments->at(segmentNum);
-            ShipSegment cachedSegment = cachedSegments->at(segmentNum);
-            if (cachedSegment.isSunk() != segment.isSunk()) {
-                if (segment.isSunk()) {
+            ShipSegment *segment = &segments->at(segmentNum);
+            ShipSegment *cachedSegment = &cachedSegments->at(segmentNum);
+            if (cachedSegment->isSunk() != segment->isSunk()) {
+                if (segment->isSunk()) {
                     this->buttonArray[shipNum][segmentNum]->setIcon(this->icons[FieldStatus::SUNK]);
-                    cachedSegment.sink();
+                    cachedSegment->sink();
                 } else {
                     this->buttonArray[shipNum][segmentNum]->setIcon(this->icons[FieldStatus::SHIP]);
-                    cachedSegment.unsink();
+                    cachedSegment->unsink();
                 }
             }
         }

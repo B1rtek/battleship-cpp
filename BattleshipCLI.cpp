@@ -79,8 +79,8 @@ std::string formatGameMessages(std::vector<GameMessage> messages, bool extraNewl
     for (auto &message: messages) {
         messagesList.append(messagesMap[message] + '\n');
     };
-    if (extraNewline) {
-        messagesList += '\n';
+    if (!extraNewline) {
+        messagesList.pop_back();
     }
     return messagesList;
 }
