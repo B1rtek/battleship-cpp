@@ -110,9 +110,8 @@ std::pair<char, int> Enemy::rankFieldsAndChoose() {
             bestFields.push_back(field.second);
         }
     }
-    std::mt19937 gen(time(nullptr));
-    std::uniform_int_distribution<> dist(0, bestFields.size() - 1);
-    return bestFields[dist(gen)];
+    srand(time(nullptr));
+    return bestFields[rand() % bestFields.size()];
 }
 
 /**

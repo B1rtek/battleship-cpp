@@ -170,12 +170,11 @@ int Fleet::newShipTestFit(Ship newShip) {
 void Fleet::createRandom() {
     this->ships.clear();
     this->selectedShip = nullptr;
-    std::mt19937 gen(time(nullptr));
-    std::uniform_int_distribution<> dist(0, 1);
+    srand(time(nullptr));
     /// rotation set to true means that the ship will be vertical
     bool rotations[10];
     for (bool &rotation: rotations) {
-        rotation = dist(gen);
+        rotation = rand() % 2;
     }
     int sizes[10] = {4, 3, 3, 2, 2, 2, 1, 1, 1, 1};
     Board tempBoard = Board();
@@ -187,8 +186,7 @@ void Fleet::createRandom() {
                 goodCoords.push_back(field);
             }
         }
-        dist = std::uniform_int_distribution<>(0, goodCoords.size() - 1);
-        std::pair<char, int> position = goodCoords[dist(gen)];
+        std::pair<char, int> position = goodCoords[rand() % goodCoords.size()];
         Ship shipToAdd = Ship(position, sizes[i], rotations[i]);
         this->ships.push_back(shipToAdd);
         markMissesAround(shipToAdd, tempBoard);
