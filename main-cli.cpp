@@ -1,4 +1,4 @@
-#include "include/BattleshipCLI.h"
+#include "BattleshipCLI.h"
 #include <argparse.hpp>
 
 using namespace std;
