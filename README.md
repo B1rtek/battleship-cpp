@@ -1,6 +1,6 @@
 # Battleship-cpp
 
-[My Battleship game](https://github.com/B1rtek/battleship-py) rewritten in C++, with a GUI made in Qt5
+[My Battleship game](https://github.com/B1rtek/battleship-py) rewritten in (or translated to) C++, with a GUI made in Qt5
 
 ## Requirements:
 
