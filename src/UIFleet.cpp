@@ -1,5 +1,7 @@
 #include "UIFleet.h"
 
+#include <utility>
+
 /**
  * @brief Initializes all values and creates a button array
  */
@@ -35,7 +37,7 @@ UIFleet::UIFleet() {
 void UIFleet::createButtonArray() {
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < this->positionsArray[i].size(); j++) {
-            BoardButton *button = new BoardButton();
+            auto *button = new BoardButton();
             button->setGameCoordinates(' ', 0);
             this->buttonArray[i][j] = button;
         }
@@ -135,7 +137,7 @@ void UIFleet::defineRightClickAction(std::function<void(char, int)> *rightClickA
  * @param iconsMap map containing all icons needed to display the fleet
  */
 void UIFleet::setIcons(std::map<FieldStatus, QIcon> iconsMap) {
-    this->icons = iconsMap;
+    this->icons = std::move(iconsMap);
 }
 
 

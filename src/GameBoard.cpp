@@ -76,7 +76,7 @@ bool GameBoard::unmarkAsEmpty(char x, int y) {
  * @brief Called when a ship in a fleet has sunk to mark him as sunk on the map
  * @param shipToSink Ship to be sunk
  */
-void GameBoard::sinkShip(Ship shipToSink) {
+void GameBoard::sinkShip(const Ship& shipToSink) {
     this->dataBoard.markSunkenShip(shipToSink);
     this->visibleBoard.markSunkenShip(shipToSink);
 }
@@ -119,7 +119,7 @@ bool GameBoard::fieldUndiscovered(char x, int y) {
  * @brief Marks misses around the specified Ship
  * @param shipToMarkAround Ship to mark misses around
  */
-void GameBoard::markMissesAround(Ship shipToMarkAround) {
+void GameBoard::markMissesAround(const Ship& shipToMarkAround) {
     ::markMissesAround(shipToMarkAround, this->visibleBoard);
     this->sinkShip(shipToMarkAround);
 }

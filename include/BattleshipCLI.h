@@ -31,13 +31,13 @@ enum Command {
 
 void cls();
 
-std::string formatFleetCreatorMessages(std::vector<FCMessage> messages);
+std::string formatFleetCreatorMessages(const std::vector<FCMessage>& messages);
 
-std::string formatGameMessages(std::vector<GameMessage> messages, bool extraNewline = false);
+std::string formatGameMessages(const std::vector<GameMessage>& messages, bool extraNewline = false);
 
 std::vector<std::string> splitCommand(std::string command);
 
-bool isNumeric(std::string possiblyNumber);
+bool isNumeric(const std::string& possiblyNumber);
 
 /**
  * @brief Class operating the game in the command line
@@ -52,25 +52,25 @@ class BattleshipCLI {
 
     void display();
 
-    void displayMainMenu();
+    static void displayMainMenu();
 
     void displayFleetCreator();
 
     void displayGame();
 
-    void displayHelp();
+    static void displayHelp();
 
     void displaySettings();
 
     std::pair<Command, std::pair<char, int>> playerInput();
 
-    std::pair<Command, std::pair<char, int>> playerInputMainMenu(std::vector<std::string> commandParts);
+    static std::pair<Command, std::pair<char, int>> playerInputMainMenu(std::vector<std::string> commandParts);
 
-    std::pair<Command, std::pair<char, int>> playerInputFleetCreator(std::vector<std::string> commandParts);
+    static std::pair<Command, std::pair<char, int>> playerInputFleetCreator(std::vector<std::string> commandParts);
 
-    std::pair<Command, std::pair<char, int>> playerInputGame(std::vector<std::string> commandParts);
+    static std::pair<Command, std::pair<char, int>> playerInputGame(std::vector<std::string> commandParts);
 
-    std::pair<Command, std::pair<char, int>> playerInputSettings(std::vector<std::string> commandParts);
+    static std::pair<Command, std::pair<char, int>> playerInputSettings(std::vector<std::string> commandParts);
 
     void execute(Command command, char x, int y);
 

@@ -32,9 +32,9 @@ public:
 
     std::vector<ShipSegment> *getSegments();
 
-    int getSize();
+    int getSize() const;
 
-    bool isVertical();
+    bool isVertical() const;
 
     std::pair<char, int> getOrigin();
 };

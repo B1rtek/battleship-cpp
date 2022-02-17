@@ -29,7 +29,7 @@ void ShipSegment::unsink() {
     this->sunk = false;
 }
 
-bool ShipSegment::isSunk() {
+bool ShipSegment::isSunk() const {
     return this->sunk;
 }
 

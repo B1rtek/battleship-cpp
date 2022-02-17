@@ -80,7 +80,7 @@ void Ship::sink(char x, int y) {
 
 /**
  * @brief Checks if this Ship sunk or not
- * @return true if it sunk, dalse otherwise
+ * @return true if it sunk, false otherwise
  *
  * Check is performed by checking each segment, and if they all sunk,
  * the Ship did as well
@@ -128,11 +128,11 @@ std::vector<ShipSegment> *Ship::getSegments() {
     return &this->segments;
 }
 
-int Ship::getSize() {
+int Ship::getSize() const {
     return this->size;
 }
 
-bool Ship::isVertical() {
+bool Ship::isVertical() const {
     return this->vertical;
 }
 

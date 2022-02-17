@@ -13,7 +13,7 @@
 class UIFleet {
     Fleet cachedFleet;
     std::map<FieldStatus, QIcon> icons;
-    BoardButton *buttonArray[10][4];
+    BoardButton *buttonArray[10][4]{};
     std::vector<std::pair<int, int>> positionsArray[10];
 
     void createButtonArray();

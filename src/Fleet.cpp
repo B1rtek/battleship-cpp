@@ -45,7 +45,7 @@ std::vector<std::pair<char, int>> fieldsAroundField(std::pair<char, int> source)
  * @param baseVector vector to generate a set from
  * @return a set with the same content as the given vector
  */
-std::set<std::pair<char, int>> setFromVector(std::vector<std::pair<char, int>> baseVector) {
+std::set<std::pair<char, int>> setFromVector(const std::vector<std::pair<char, int>>& baseVector) {
     std::set<std::pair<char, int>> basedSet;
     for (auto i: baseVector) {
         basedSet.insert(i);
@@ -83,7 +83,7 @@ std::vector<std::pair<char, int>> fieldsAroundShip(Ship ship) {
  */
 
 void markMissesAround(Ship ship, Board &placementBoard) {
-    std::vector<std::pair<char, int>> fieldsAround = fieldsAroundShip(ship);
+    std::vector<std::pair<char, int>> fieldsAround = fieldsAroundShip(std::move(ship));
     for (auto i: fieldsAround) {
         placementBoard.setFieldStatus(i.first, i.second, FieldStatus::MISS);
     }
@@ -106,7 +106,7 @@ Fleet::Fleet() {
  * @brief Alternate constructor used in some cases
  * @param ships A vector of ships to initialize this fleet with
  */
-Fleet::Fleet(std::vector<Ship> ships) {
+Fleet::Fleet(const std::vector<Ship>& ships) {
     if (!ships.empty()) {
         this->ships = ships;
     }
@@ -144,7 +144,7 @@ int Fleet::getSelectedShipIndex() {
 int Fleet::newShipTestFit(Ship newShip) {
     std::vector<Ship> newFleet = this->ships;
     int oldShipIndex = this->getSelectedShipIndex();
-    newFleet[oldShipIndex] = newShip;
+    newFleet[oldShipIndex] = std::move(newShip);
     Board tempBoard = Board();
     for (auto &ship: newFleet) {
         if (fieldAvailable(ship, tempBoard)) {
@@ -169,11 +169,11 @@ int Fleet::newShipTestFit(Ship newShip) {
 void Fleet::createRandom() {
     this->ships.clear();
     this->selectedShip = nullptr;
-    srand(time(nullptr));
+    srand(time(nullptr)); // NOLINT(cert-msc51-cpp)
     /// rotation set to true means that the ship will be vertical
     bool rotations[10];
     for (bool &rotation: rotations) {
-        rotation = rand() % 2;
+        rotation = rand() % 2; // NOLINT(cert-msc50-cpp)
     }
     int sizes[10] = {4, 3, 3, 2, 2, 2, 1, 1, 1, 1};
     Board tempBoard = Board();
@@ -185,7 +185,7 @@ void Fleet::createRandom() {
                 goodCoords.push_back(field);
             }
         }
-        std::pair<char, int> position = goodCoords[rand() % goodCoords.size()];
+        std::pair<char, int> position = goodCoords[rand() % goodCoords.size()]; // NOLINT(cert-msc50-cpp)
         Ship shipToAdd = Ship(position, sizes[i], rotations[i]);
         this->ships.push_back(shipToAdd);
         markMissesAround(shipToAdd, tempBoard);

@@ -101,9 +101,9 @@ public:
 
     std::vector<GameMessage> getDisplayMessages();
 
-    bool isPlayersTurn();
+    bool isPlayersTurn() const;
 
-    bool isWon();
+    bool isWon() const;
 };
 
 #endif //BATTLESHIP_CPP_GAME_H

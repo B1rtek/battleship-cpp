@@ -155,7 +155,7 @@ void Game::messagePlayersTurn() {
  * @param settings settings to apply
  */
 void Game::applySettings(std::map<Setting, bool> newSettings) {
-    this->settings = newSettings;
+    this->settings = std::move(newSettings);
 }
 
 /**
@@ -168,7 +168,7 @@ void Game::applySettings(std::map<Setting, bool> newSettings) {
 void Game::startGame(Board playerDataBoard, Fleet playerDataFleet) {
     this->playerBoard = GameBoard(playerDataBoard);
     this->enemy = Enemy(this->settings[Setting::HARD_ENEMY]);
-    this->playerFleet = playerDataFleet;
+    this->playerFleet = std::move(playerDataFleet);
     this->createEnemyFleet();
     this->playersTurn = true;
     this->won = false;
@@ -345,10 +345,10 @@ std::vector<GameMessage> Game::getDisplayMessages() {
     return messagesToGet;
 }
 
-bool Game::isPlayersTurn() {
+bool Game::isPlayersTurn() const {
     return this->playersTurn;
 }
 
-bool Game::isWon() {
+bool Game::isWon() const {
     return this->won;
 }

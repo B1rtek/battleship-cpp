@@ -16,7 +16,7 @@ std::vector<std::pair<char, int>> fieldsAroundField(std::pair<char, int> source)
 
 std::vector<std::pair<char, int>> fieldsAroundShip(Ship ship);
 
-std::set<std::pair<char, int>> setFromVector(std::vector<std::pair<char, int>> baseVector);
+std::set<std::pair<char, int>> setFromVector(const std::vector<std::pair<char, int>>& baseVector);
 
 void markMissesAround(Ship ship, Board &placementBoard);
 
@@ -34,7 +34,7 @@ class Fleet {
 public:
     Fleet();
 
-    explicit Fleet(std::vector<Ship> ships);
+    explicit Fleet(const std::vector<Ship>& ships);
 
     void createRandom();
 

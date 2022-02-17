@@ -9,7 +9,7 @@
  *
  * Replacement for std::filesystem::exists because programs compiled with it don't run
  */
-bool fileExists(std::string path) {
+bool fileExists(const std::string& path) {
     std::ifstream f(path.c_str());
     return f.good();
 }
@@ -23,7 +23,7 @@ Settings::Settings(std::string path) {
             {Setting::MARK_MISSES_AROUND, true},
             {Setting::HARD_ENEMY,         false}
     };
-    this->path = path;
+    this->path = std::move(path);
     this->settings = this->defaultSettings;
 }
 

@@ -1,5 +1,7 @@
 #include "UIBoard.h"
 
+#include <utility>
+
 /**
  * @brief Initializes all values and creates a button array
  */
@@ -15,7 +17,7 @@ UIBoard::UIBoard() {
 void UIBoard::createButtonArray() {
     for (int y = 0; y < 10; y++) {
         for (int x = 0; x < 10; x++) {
-            BoardButton *button = new BoardButton();
+            auto *button = new BoardButton();
             std::pair<char, int> coords = arrayToGameCoords(x, y);
             button->setGameCoordinates(coords.first, coords.second);
             this->buttonArray[y][x] = button;
@@ -109,5 +111,5 @@ void UIBoard::defineRightClickAction(std::function<void(char, int)> *rightClickA
  * @param iconsMap map containing all icons needed to display the board
  */
 void UIBoard::setIcons(std::map<FieldStatus, QIcon> iconsMap) {
-    this->icons = iconsMap;
+    this->icons = std::move(iconsMap);
 }

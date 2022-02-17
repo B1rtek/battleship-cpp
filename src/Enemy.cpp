@@ -1,8 +1,8 @@
 #include "Enemy.h"
 #include "Board.h"
 #include <algorithm>
-#include <random>
 #include <ctime>
+#include <random>
 
 std::pair<char, int> upperField(std::pair<char, int> coords) {
     return std::make_pair(coords.first, coords.second - 1);
@@ -110,8 +110,8 @@ std::pair<char, int> Enemy::rankFieldsAndChoose() {
             bestFields.push_back(field.second);
         }
     }
-    srand(time(nullptr));
-    return bestFields[rand() % bestFields.size()];
+    srand(time(nullptr)); // NOLINT(cert-msc51-cpp)
+    return bestFields[rand() % bestFields.size()]; // NOLINT(cert-msc50-cpp)
 }
 
 /**
@@ -142,9 +142,8 @@ std::pair<char, int> Enemy::shoot() {
     if (this->hardMode) {
         chosen = this->rankFieldsAndChoose();
     } else {
-        std::mt19937 gen(time(nullptr));
-        std::uniform_int_distribution<> dist(0, this->undiscovered.size() - 1);
-        chosen = this->undiscovered[dist(gen)];
+        srand(time(nullptr)); // NOLINT(cert-msc51-cpp)
+        chosen = this->undiscovered[rand() % this->undiscovered.size()]; // NOLINT(cert-msc50-cpp)
     }
     this->undiscoveredRemove(chosen);
     this->lastTarget = chosen;
@@ -164,7 +163,7 @@ void Enemy::reactToHit() {
         }
     }
     std::vector<std::pair<char, int>> toShootList = createListOfAdherent(this->lastTarget);
-    std::mt19937 gen(time(nullptr));
+    std::mt19937 gen(time(nullptr)); // NOLINT(cert-msc51-cpp)
     std::shuffle(toShootList.begin(), toShootList.end(), gen);
     for (auto &target: toShootList) {
         if (this->undiscoveredSet.count(target)) {

@@ -22,13 +22,13 @@ public:
 
     bool unmarkAsEmpty(char x, int y);
 
-    void sinkShip(Ship shipToSink);
+    void sinkShip(const Ship& shipToSink);
 
     Board getDisplayBoard(bool displayAsEnemy = false);
 
     bool fieldUndiscovered(char x, int y);
 
-    void markMissesAround(Ship shipToMarkAround);
+    void markMissesAround(const Ship& shipToMarkAround);
 };
 
 #endif //BATTLESHIP_CPP_GAMEBOARD_H

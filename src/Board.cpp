@@ -11,7 +11,7 @@
  * 7th row, and computers count from 0, and the coordinates are stored as [y][x]
  */
 std::pair<int, int> gameToArrayCoords(char x, int y) {
-    x = int(x) < 97 ? x = char(int(x) + 32) : x;
+    if (int(x) < 97) x = char(int(x) + 32);
     int cx = int(x) - 97;
     y -= 1;
     return std::make_pair(y, cx);

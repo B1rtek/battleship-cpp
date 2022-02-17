@@ -13,7 +13,7 @@
 class UIBoard {
     Board cachedBoard;
     std::map<FieldStatus, QIcon> icons;
-    BoardButton *buttonArray[10][10];
+    BoardButton *buttonArray[10][10]{};
 
     void createButtonArray();
 

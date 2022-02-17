@@ -18,7 +18,7 @@ public:
 
     void unsink();
 
-    bool isSunk();
+    bool isSunk() const;
 
     std::pair<char, int> getPosition();
 };

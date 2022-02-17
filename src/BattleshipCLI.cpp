@@ -2,17 +2,16 @@
 #include <iostream>
 #include <algorithm>
 
-#ifdef _WIN32
-std::string clsCommand = "cls";
-#endif
-#ifdef __linux__
-std::string clsCommand = "clear";
-#endif
-
 /**
  * @brief Clears the console
  */
 void cls() {
+#ifdef _WIN32
+    std::string clsCommand = "cls";
+#endif
+#ifdef __linux__
+    std::string clsCommand = "clear";
+#endif
     system(clsCommand.c_str());
 }
 
@@ -21,7 +20,7 @@ void cls() {
  * @param messages messages from FleetCreator
  * @return string with all messages formatted
  */
-std::string formatFleetCreatorMessages(std::vector<FCMessage> messages) {
+std::string formatFleetCreatorMessages(const std::vector<FCMessage> &messages) {
     std::string helpContent = "Help:\n"
                               "sel <x> <y>: selects a ship in the given location\n"
                               "mv <x> <y>: moves the selected ship to the given location. The location points to the ship's uppermost or left segment\n"
@@ -49,7 +48,7 @@ std::string formatFleetCreatorMessages(std::vector<FCMessage> messages) {
  * version since adding text to a textbox doesn't add a newline at the end
  * @return string with all messages formatted
  */
-std::string formatGameMessages(std::vector<GameMessage> messages, bool extraNewline) {
+std::string formatGameMessages(const std::vector<GameMessage> &messages, bool extraNewline) {
     std::string helpContent = "Help:\n"
                               "st <x> <y>: shoots at the specified field\n"
                               "mk <x> <y>: marks the specified field on the enemy's board as empty\n"
@@ -78,7 +77,7 @@ std::string formatGameMessages(std::vector<GameMessage> messages, bool extraNewl
     std::string messagesList;
     for (auto &message: messages) {
         messagesList.append(messagesMap[message] + '\n');
-    };
+    }
     if (!extraNewline) {
         messagesList.pop_back();
     }
@@ -114,13 +113,9 @@ std::vector<std::string> splitCommand(std::string command) {
  *
  * Created so I don't have to handle exceptions while converting strings to numbers
  */
-bool isNumeric(std::string possiblyNumber) {
-    for (auto &character: possiblyNumber) {
-        if (character < '0' || character > '9') {
-            return false;
-        }
-    }
-    return true;
+bool isNumeric(const std::string &possiblyNumber) {
+    return std::all_of(possiblyNumber.begin(), possiblyNumber.end(),
+                       [](char character) { return character >= '0' && character <= '9'; });
 }
 
 /**
@@ -142,13 +137,13 @@ BattleshipCLI::BattleshipCLI() {
 void BattleshipCLI::display() {
     cls();
     if (this->state == AppState::MAIN_MENU) {
-        this->displayMainMenu();
+        BattleshipCLI::displayMainMenu();
     } else if (this->state == AppState::SETUP) {
         this->displayFleetCreator();
     } else if (this->state == AppState::GAME) {
         this->displayGame();
     } else if (this->state == AppState::HOW_TO_PLAY) {
-        this->displayHelp();
+        BattleshipCLI::displayHelp();
     } else {
         this->displaySettings();
     }
@@ -227,15 +222,15 @@ std::pair<Command, std::pair<char, int>> BattleshipCLI::playerInput() {
     std::transform(command.begin(), command.end(), command.begin(), ::tolower);
     std::vector<std::string> commandParts = splitCommand(command);
     if (this->state == AppState::MAIN_MENU) {
-        return this->playerInputMainMenu(commandParts);
+        return BattleshipCLI::playerInputMainMenu(commandParts);
     } else if (this->state == AppState::SETUP) {
-        return this->playerInputFleetCreator(commandParts);
+        return BattleshipCLI::playerInputFleetCreator(commandParts);
     } else if (this->state == AppState::GAME) {
-        return this->playerInputGame(commandParts);
+        return BattleshipCLI::playerInputGame(commandParts);
     } else if (this->state == AppState::HOW_TO_PLAY) {
         return std::make_pair(Command::EXIT_TO_MAIN, std::make_pair(' ', 0));
     } else {
-        return this->playerInputSettings(commandParts);
+        return BattleshipCLI::playerInputSettings(commandParts);
     }
 }
 

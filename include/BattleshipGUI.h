@@ -27,19 +27,19 @@ class BattleshipGUI : public QMainWindow {
 
     void setupFleetDisplays();
 
-    void linkButtons();
+    void linkButtons() const;
 
     void applySettings();
 
-    void fixPySide2UICBug();
+    void fixPySide2UICBug() const;
 
     void resizeWindow();
 
     void fleetCreatorStart();
 
-    void HTPShow();
+    void HTPShow() const;
 
-    void returnToMain();
+    void returnToMain() const;
 
     void fleetCreatorLeftClick(char x, int y);
 
@@ -57,7 +57,7 @@ class BattleshipGUI : public QMainWindow {
 
     void gameRefresh();
 
-    void settingsShow();
+    void settingsShow() const;
 
     void settingsToggleMMA();
 

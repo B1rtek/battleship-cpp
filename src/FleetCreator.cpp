@@ -47,7 +47,7 @@ void FleetCreator::start() {
 }
 
 /**
- * @brief Handles the ship selecteion process in the board setup process
+ * @brief Handles the ship selection process in the board setup process
  * @param x x coordinate of a field
  * @param y y coordinate of a field
  */
