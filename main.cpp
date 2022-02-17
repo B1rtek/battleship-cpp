@@ -1,4 +1,4 @@
-#include "BattleshipGUI.h"
+#include "include/BattleshipGUI.h"
 #include <argparse.hpp>
 #include <QApplication>
 #include <QStyleFactory>

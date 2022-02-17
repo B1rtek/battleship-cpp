@@ -1,4 +1,4 @@
-#include "UIBoard.h"
+#include "../include/UIBoard.h"
 
 /**
  * @brief Initializes all values and creates a button array

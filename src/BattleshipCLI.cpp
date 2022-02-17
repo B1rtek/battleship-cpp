@@ -1,4 +1,4 @@
-#include "BattleshipCLI.h"
+#include "../include/BattleshipCLI.h"
 #include <iostream>
 #include <algorithm>
 

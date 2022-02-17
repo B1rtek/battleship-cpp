@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "../include/Game.h"
 
 /**
  * @brief Initializes game objects and variables needed to run the game

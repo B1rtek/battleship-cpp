@@ -1,4 +1,4 @@
-#include "GameBoard.h"
+#include "../include/GameBoard.h"
 
 /**
  * @brief Default constructor needed by some other classes

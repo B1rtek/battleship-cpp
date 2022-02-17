@@ -1,4 +1,4 @@
-#include "Ship.h"
+#include "../include/Ship.h"
 
 /**
  * @brief Creates a ship according to the given parameters

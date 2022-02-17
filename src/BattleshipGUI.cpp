@@ -1,5 +1,5 @@
 #include <QScrollBar>
-#include "BattleshipGUI.h"
+#include "../include/BattleshipGUI.h"
 
 #ifdef _WIN32
 QSize windowSize = QSize(700, 540);
